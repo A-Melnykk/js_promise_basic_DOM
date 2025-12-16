@@ -1,8 +1,7 @@
 'use strict';
 
 /**
-
- * @param {string} text - Текст повідомлення.
+ * @param {string} text
  * @param {boolean} isError
  */
 function appendMessage(text, isError = false) {
@@ -39,14 +38,14 @@ promise1
     appendMessage('Promise was resolved!');
   })
   .catch((error) => {
-    appendMessage(`Promise was rejected! (${error.message || ''})`, true);
+    appendMessage('Promise was rejected!', !!error);
   });
 
 const REJECTION_TIME_MS = 3000;
 
 const promise2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject(new Error('Promise was rejected! Timeout of 3 seconds reached.'));
+    reject(new Error('Timeout of 3 seconds reached.'));
   }, REJECTION_TIME_MS);
 });
 
@@ -54,10 +53,6 @@ promise2
   .then(() => {
     appendMessage('Promise was resolved!');
   })
-
-  .catch(() => {
-    appendMessage('Promise was rejected!', true);
+  .catch((error) => {
+    appendMessage('Promise was rejected!', !!error);
   });
-
-if (!logo) {
-}
